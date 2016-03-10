@@ -1,0 +1,16 @@
+{
+  "name": "application-name",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "postinstall": "grunt uglify",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "2.5.8",
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13",
+    "grunt-contrib-uglify": "1.0.0",
+    "jade": ">= 0.0.1"
+  }
+}
