@@ -1,0 +1,78 @@
+<!DOCTYPE html><html><head>
+<meta charset='utf-8'/>
+
+	 <title>Shapefile in Leaflet!</title>   <style>
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0;}
+      #map{ height: 100% }
+    </style>
+	 <link rel="stylesheet" href="site/leaflet.css" />
+<!--[if lte IE 8]>
+    <link rel="stylesheet" href="site/leaflet.ie.css" />
+<![endif]-->
+<link rel="stylesheet" href="site/gh-fork-ribbon.css" />
+<script src="site/leaflet.js"></script>
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40454900-1', 'calvinmetcalf.github.io');
+  ga('send', 'pageview');
+</script>
+	 </head><body><div class="github-fork-ribbon-wrapper right">
+		<div class="github-fork-ribbon">
+			<a href="https://github.com/calvinmetcalf/shapefile-js">Fork me on GitHub</a>
+		</div>
+	</div>  <div id="map"></div>
+<script src="site/shp.min.js"> </script>
+<script>
+
+  var myStyle = {
+      "color": "#ff7800",
+      "weight": 2,
+      "opacity": 0.7
+  };
+
+  var southWest = L.latLng(25.712, 62.227),
+  northEast = L.latLng(44.774, 88.125),
+  bounds = L.latLngBounds(southWest, northEast);
+
+
+
+	var m= L.map('map', {maxBounds: bounds}).setView([34.1249883172,73.6328125], 7);
+  var geo = L.geoJson(
+  {
+    features:[]
+  },
+  {style: myStyle,
+  
+    onEachFeature:function popUp(f,l){
+  		var out = [];
+  		if (f.properties){
+      		for(var key in f.properties){
+          	out.push(key+": "+f.properties[key]);
+      }
+      l.bindPopup(out.join("<br />"));
+    }
+  }
+  }).addTo(m);
+
+
+
+  L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png',
+    { 
+      attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> contributors', 
+      subdomains: ['otile1','otile2','otile3','otile4']
+    }).addTo(m);
+
+
+  var base = 'files/kp.zip';
+
+	shp(base).then(function(data){
+    geo.addData(data);
+  });
+
+</script>
+</body></html>
