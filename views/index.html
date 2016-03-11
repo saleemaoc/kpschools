@@ -12,67 +12,97 @@
 <![endif]-->
 <link rel="stylesheet" href="site/gh-fork-ribbon.css" />
 <script src="site/leaflet.js"></script>
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-40454900-1', 'calvinmetcalf.github.io');
-  ga('send', 'pageview');
-</script>
-	 </head><body><div class="github-fork-ribbon-wrapper right">
-		<div class="github-fork-ribbon">
-			<a href="https://github.com/calvinmetcalf/shapefile-js">Fork me on GitHub</a>
-		</div>
-	</div>  <div id="map"></div>
-<script src="site/shp.min.js"> </script>
-<script>
+    ga('create', 'UA-40454900-1', 'calvinmetcalf.github.io');
+    ga('send', 'pageview');
+  </script>
+</head>
+<body>
 
-  var myStyle = {
-      "color": "#ff7800",
-      "weight": 2,
-      "opacity": 0.7
-  };
+  <div id="map"></div>
 
-  var southWest = L.latLng(25.712, 62.227),
-  northEast = L.latLng(44.774, 88.125),
-  bounds = L.latLngBounds(southWest, northEast);
+  <script src="site/shp.min.js"> </script>
+  <script>
+
+    var myStyle = {
+        "color": "#ff7800",
+        "weight": 2,
+        "opacity": 0.7
+    };
+
+    var southWest = L.latLng(25.712, 62.227),
+    northEast = L.latLng(44.774, 88.125),
+    bounds = L.latLngBounds(southWest, northEast);
 
 
 
-	var m= L.map('map', {maxBounds: bounds}).setView([34.1249883172,73.6328125], 7);
-  var geo = L.geoJson(
-  {
-    features:[]
-  },
-  {style: myStyle,
-  
-    onEachFeature:function popUp(f,l){
-  		var out = [];
-  		if (f.properties){
-      		for(var key in f.properties){
-          	out.push(key+": "+f.properties[key]);
+  	var m= L.map('map', {maxBounds: bounds}).setView([34.1249883172,73.6328125], 7);
+    var geo = L.geoJson(
+    {
+      features:[]
+    },
+    {style: myStyle,
+    
+      onEachFeature:function popUp(f,l){
+    		var out = [];
+    		if (f.properties){
+
+          var NAME_0 = f.properties['NAME_0']//: Pakistan
+          var NAME_1 = f.properties['NAME_1']//: N.W.F.P.
+          var NAME_2 = f.properties['NAME_2']//: Malakand
+          var NAME_3 = f.properties['NAME_3']//: Swat
+
+          var popUpStr = "District: " + NAME_3 + "<br />Division: " + NAME_2 + "<br /> Province: " + NAME_1;
+        		// for(var key in f.properties){
+          //   	out.push(key+": "+f.properties[key]);
+          //   }
+        l.bindPopup(popUpStr);
       }
-      l.bindPopup(out.join("<br />"));
     }
-  }
-  }).addTo(m);
-
-
-
-  L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png',
-    { 
-      attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> contributors', 
-      subdomains: ['otile1','otile2','otile3','otile4']
     }).addTo(m);
 
 
-  var base = 'files/kp.zip';
 
-	shp(base).then(function(data){
-    geo.addData(data);
-  });
+    L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', { 
+        attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> contributors',
+        subdomains: ['otile1','otile2','otile3','otile4']
+    }).addTo(m);
 
-</script>
-</body></html>
+
+    var base = 'files/kp.zip';
+
+  	shp(base).then(function(data){
+      geo.addData(data[2]);
+    });
+
+  </script>
+</body>
+</html>
+
+
+<!-- 
+  ID_0: 173
+ISO: PAK
+NAME_0: Pakistan
+ID_1: 2153
+NAME_1: N.W.F.P.
+ID_2: 25314
+NAME_2: Malakand
+ID_3: 43657
+NAME_3: Swat
+VARNAME_3: 
+NL_NAME_3: 
+HASC_3: 
+TYPE_3: District
+ENGTYPE_3: District
+VALIDFR_3: Unknown
+VALIDTO_3: Present
+REMARKS_3: 
+Shape_Leng: 4.11647099376
+Shape_Area: 0.51626736186
+ -->

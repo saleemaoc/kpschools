@@ -18,7 +18,7 @@ app.configure(function(){
   app.use(app.router);
   // app.use(express.static(__dirname + '/public'));
   app.use('/site', express.static('site'));
-  app.use('/files', express.static('public'));
+  app.use(express.static('public'));
 });
 
 app.configure('development', function(){
