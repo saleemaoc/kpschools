@@ -11,9 +11,12 @@ exports.index = function(req, res){
 };
 
 
+if(connString == undefined) {
+     throw new Error("DB connection URL not set!!");
+}
 
 function getDistricts(req, res){
-    var connString = 'postgres://kpapps:kcolniws@localhost:5432/kpapps';
+    var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;
     pg.connect(connString, function(err, client) {
     	// var sql = 'select ST_AsGeoJSON(geom) as shape from kpdistricts;'
     	var sql = 'select ST_AsGeoJSON(geom) as shape, NAME_2 as division, NAME_3 as district, shape_area from kpdistricts;';
@@ -46,7 +49,7 @@ function FeatureCollection(){
 }
 
 function getSchools(req, res, districts){
-    var connString = 'postgres://kpapps:kcolniws@localhost:5432/kpapps';
+    var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;
     pg.connect(connString, function(err, client) {
     	// var sql = 'select ST_AsGeoJSON(geom) as shape from kpdistricts;'
     	var sql = 'select  ST_AsGeoJSON(geom) as shape, schoolname, scode, status, gender, level, location, village, tehsil, district, boys, girls, teachstaff, nonteachin, coveredarea, water, electricity, classrooms, otherrooms, latrineusa, boudarywall from schools;';
@@ -104,7 +107,7 @@ exports.refreshSchools = function(req, res) {
 
     console.log(sql);
 
-    var connString = 'postgres://kpapps:kcolniws@localhost:5432/kpapps';
+    var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;
     pg.connect(connString, function(err, client) {
         client.query(sql, function(err, result) {
             var schools = new FeatureCollection();
