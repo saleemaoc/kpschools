@@ -1,7 +1,8 @@
-{
+ {
   "name": "kp-schools",
   "version": "1.0.0",
   "private": true,
+  "description": "Schools of Khyber Pakhtunkhwa on OSM",
   "scripts": {
     "postinstall": "grunt uglify",
     "start": "node app.js"
@@ -32,5 +33,24 @@
     "proj4": "^2.1.4",
     "testling": "^1.6.1",
     "uglify-js": "^2.4.24"
-  }
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "Node.js",
+    "schools",
+    "KP",
+    "Khyber",
+    "Pakhtunkhwa",
+    "GIS"
+  ],  
+  "author": {
+    "name": "Saleem Ullah",
+    "email": "saleem.ullah.88@gmail.com",
+    "url": "https://www.linkedin.com/in/suaocs"
+  }  
 }
+
