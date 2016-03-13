@@ -109,7 +109,11 @@ $('#refresh-btn').on('click', function(e){
 
 
 $('#clear-btn').on('click', function(e){
-  $('input:radio:checked').map(function() {
+/*  $('input:radio:checked').map(function() {
     $(this).removeAttr('checked');
   }).get();
+  $('.allradio').map(function(){$(this).attr('checked','checked')});
+  //$.get('/', function(data, status){console.log('status: ' + status)});
+*/  location.reload(true);
+
 });
