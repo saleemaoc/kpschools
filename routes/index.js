@@ -75,14 +75,19 @@ function getSchools(req, res, districts){
 exports.refreshSchools = function(req, res) {
     //["girls", "boys", "primary", "middle", "high", "highersec", "functional", "closed", "urban", "rural"]
     var sql = 'select  ST_AsGeoJSON(geom) as shape, schoolname, scode, status, gender, level, location, village, tehsil, district, boys, girls, teachstaff, nonteachin, coveredarea, water, electricity, classrooms, otherrooms, latrineusa, boudarywall from schools';
-    var clauseDict = {"girls": "gender='Girls'", "boys": "gender='Boys'", "primary": "level='Primary'", "middle": "level='Middle'", "high": "level=''High", "highersec": "level='Higher Secondary'", "functional": "status='Functional'", "closed": "status!='Functional'", "urban": "location='Urbon'", "rural": "location='Rural'"};
+    var clauseDict = {"girls": "gender='Girls'", "boys": "gender='Boys'", "primary": "level='Primary'", "middle": "level='Middle'", "high": "level='High'", "highersec": "level='Higher Secondary'", "functional": "status='Functional'", "closed": "status!='Functional'", "urban": "location='Urbon'", "rural": "location='Rural'"};
 
     var checked = req.param('checked');
     if(checked == undefined) {
         res.send('');
         return;
     }
-    // console.log(checked);
+    checked = checked.filter(function(v) { 
+        if(!v.startsWith("all")) {
+            return v;
+        }
+    });
+    console.log(checked);
 
     var whereClause = ' where ';
     for(i=0;i<checked.length;i++) {
@@ -91,8 +96,11 @@ exports.refreshSchools = function(req, res) {
             whereClause += ' and ';
         }
     }
+    console.log('checked: ' + checked.length);
     whereClause += ';';
-    sql += whereClause;
+    if(checked.length > 0) {
+        sql += whereClause;
+    }
 
     console.log(sql);
 
@@ -104,6 +112,10 @@ exports.refreshSchools = function(req, res) {
                 schools.features[i] = JSON.parse(result.rows[i].shape);
                 //schools.features[i]['properties'] = {'schoolname': result.rows[i].schoolname, 'scode': result.rows[i].scode, 'status': result.rows[i].status, 'gender': result.rows[i].gender, 'level': result.rows[i].level, 'location': result.rows[i].location, 'village': result.rows[i].village, 'tehsil': result.rows[i].tehsil, 'district': result.rows[i].district, 'boys': result.rows[i].boys, 'girls': result.rows[i].girls, 'teachstaff': result.rows[i].teachstaff, 'nonteachin': result.rows[i].nonteachin, 'coveredarea': result.rows[i].coveredarea, 'water': result.rows[i].water, 'electricity': result.rows[i].electricity, 'classrooms': result.rows[i].classrooms, 'otherrooms': result.rows[i].otherrooms, 'latrineusa': result.rows[i].latrineusa, 'boudarywall': result.rows[i].boudarywall}
                 schools.features[i]['properties'] = {'School_Name': result.rows[i].schoolname, 'School_Code': result.rows[i].scode, 'Status': result.rows[i].status, 'Gender': result.rows[i].gender, 'Level': result.rows[i].level, 'Location': result.rows[i].location, 'Village': result.rows[i].village, 'Tehsil': result.rows[i].tehsil, 'District': result.rows[i].district, 'Boys': result.rows[i].boys, 'Girls': result.rows[i].girls, 'Teaching_Staff': result.rows[i].teachstaff, 'Nonteaching_Staff': result.rows[i].nonteachin, 'Covered_Area': result.rows[i].coveredarea, 'Water': result.rows[i].water, 'Electricity': result.rows[i].electricity, 'Classrooms': result.rows[i].classrooms, 'Other_Rooms': result.rows[i].otherrooms, 'Latrine': result.rows[i].latrineusa, 'Boundary_Wall': result.rows[i].boudarywall}
+            }
+            console.log('sending response');
+            if(err) {
+              return console.error('error running query', err);
             }
             res.send({'schools': schools});
         });

@@ -78,7 +78,7 @@ function showSchools(schools) {
   });
   markers = new L.markerClusterGroup({
     disableClusteringAtZoom: 13,
-    showCoverageOnHover: false,
+    showCoverageOnHover: true,
   });
   markers.addLayer(sJson).addTo(m);
   // sJson.addTo(m);
@@ -86,13 +86,16 @@ function showSchools(schools) {
 }
 
 $('#refresh-btn').on('click', function(e){
-  var checkedValues = $('input:checkbox:checked').map(function() {
-    return this.value;
+  var checkedValues = $('input:radio:checked').map(function() {
+    // if(!this.value.startsWith("all")) {
+      return this.value;
+    // }
   }).get();
 
   console.log(checkedValues);
   $.post('/', {'checked': checkedValues}, function(response) {
       // Log the response to the console
+      console.log('response');
       console.log(response);
       if(response.schools != undefined) {
         if (markers != null) {
@@ -106,7 +109,7 @@ $('#refresh-btn').on('click', function(e){
 
 
 $('#clear-btn').on('click', function(e){
-  $('input:checkbox:checked').map(function() {
+  $('input:radio:checked').map(function() {
     $(this).removeAttr('checked');
   }).get();
 });
