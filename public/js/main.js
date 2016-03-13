@@ -9,51 +9,6 @@ northEast = L.latLng(44.774, 76.125),
 bounds = L.latLngBounds(southWest, northEast);
 
 
-
-/*
-var m= L.map('map', {maxBounds: bounds}).setView([34.1249883172,73.6328125], 7);
-var geo = L.geoJson(
-  {features: []},
-  {
-    style: myStyle,
-
-    onEachFeature:function popUp(f,l){
-  		var out = [];
-      console.log(f);
-
-  		if (f.properties){
-
-        var NAME_0 = f.properties['NAME_0']//: Pakistan
-        var NAME_1 = f.properties['NAME_1']//: N.W.F.P.
-        var NAME_2 = f.properties['NAME_2']//: Malakand
-        var NAME_3 = f.properties['NAME_3']//: Swat
-
-        var popUpStr = "District: " + NAME_3 + "<br />Division: " + NAME_2 + "<br /> Province: " + NAME_1;
-      		// for(var key in f.properties){
-        //   	out.push(key+": "+f.properties[key]);
-        //   }
-        l.bindPopup(popUpStr);
-        // TODO fitbound the map to clicked polygon
-      }
-    }
-  }).addTo(m);
-
-
-L.tileLayer( 'http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', { 
-    attribution: '&copy; <a href="http://osm.org/copyright" title="OpenStreetMap" target="_blank">OpenStreetMap</a> contributors',
-    subdomains: ['otile1','otile2','otile3','otile4']
-}).addTo(m);
-
-
-var base = 'files/kp.zip';
-
-shp(base).then(function(data){
-  geo.addData(data[2]);
-});
-*/
-
-
-
 var m= L.map('map', {maxBounds: bounds}).setView([33.0999,71.1328], 10);
 
 /*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
@@ -90,6 +45,14 @@ function showDistricts(f) {
       }
     }).addTo(m);
 }
+
+/*
+var base = 'files/kp.zip';
+
+shp(base).then(function(data){
+  geoJson.addData(data[2]);
+});
+*/
 
 var markers;
 var sJson;
@@ -137,8 +100,6 @@ $('#refresh-btn').on('click', function(e){
     showSchools(response.schools);
   });
 
-
-  // trigger filter
 });
 
 
