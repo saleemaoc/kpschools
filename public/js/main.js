@@ -54,7 +54,8 @@ shp(base).then(function(data){
 
 
 
-var m= L.map('map', {maxBounds: bounds}).setView([34.1249883172,73.6328125], 7);
+var m= L.map('map', {maxBounds: bounds}).setView([33.0999,71.1328], 10);
+
 /*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

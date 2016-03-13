@@ -8,7 +8,8 @@
       #map{ height: 100% }
   </style>
   <link rel="stylesheet" href="site/leaflet.css" />
-    <link rel="stylesheet" href="site/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="site/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="site/bootstrap-2.3.2.css" />
   <!--[if lte IE 8]>
       <link rel="stylesheet" href="site/leaflet.ie.css" />
   <![endif]-->
@@ -22,25 +23,25 @@
     <h1 style="margin:10px 50px;">KP Schools</h1>
     <div style="width: 60%;margin:10% auto;" >
     
-      <input type="checkbox" name="gender" value="girls" checked="true">Girls<br>
-      <input type="checkbox" name="gender" value="boys">Boys<br>
+      <input type="checkbox" class="checkbox" name="gender" value="girls" checked="true">Girls<br>
+      <input type="checkbox" class="checkbox" name="gender" value="boys">Boys<br>
 
       <!-- level -->
-      <input type="checkbox" name="level" value="primary">Primary Schools<br>
-      <input type="checkbox" name="level" value="middle">Middle Schools<br>
-      <input type="checkbox" name="level" value="high">High Schools<br>
-      <input type="checkbox" name="level" value="highersec">Higher Secondary Schools<br>
+      <input type="checkbox" class="checkbox" name="level" value="primary">Primary Schools<br>
+      <input type="checkbox" class="checkbox" name="level" value="middle">Middle Schools<br>
+      <input type="checkbox" class="checkbox" name="level" value="high">High Schools<br>
+      <input type="checkbox" class="checkbox" name="level" value="highersec">Higher Secondary Schools<br>
 
       <!-- status -->
-      <input type="checkbox" name="status" value="functional">Functional<br>
-      <input type="checkbox" name="status" value="closed">Temporary Closed<br>
+      <input type="checkbox" class="checkbox" name="status" value="functional">Functional<br>
+      <input type="checkbox" class="checkbox" name="status" value="closed">Temporary Closed<br>
 
       <!-- location -->
-      <input type="checkbox" name="location" value="urban">Urban<br>
-      <input type="checkbox" name="location" value="rural">Rural<br>
+      <input type="checkbox" class="checkbox" name="location" value="urban">Urban<br>
+      <input type="checkbox" class="checkbox" name="location" value="rural">Rural<br>
 
-      <input id="refresh-btn" type="submit" value="Refresh"></submit>
-      <input id="clear-btn" type="submit" value="Clear Selection"></submit>
+      <input id="refresh-btn" class="btn" type="submit" value="Refresh"></submit>
+      <input id="clear-btn" class="btn" type="submit" value="Clear Selection"></submit>
 
 
       <!-- <p> Select districts </p> -->
