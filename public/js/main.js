@@ -9,7 +9,7 @@ northEast = L.latLng(44.774, 76.125),
 bounds = L.latLngBounds(southWest, northEast);
 
 
-var m= L.map('map', {maxBounds: bounds}).setView([33.0999,71.1328], 10);
+var m= L.map('map', {maxBounds: bounds, maxZoom:19}).setView([33.0999,71.1328], 10);
 
 /*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
