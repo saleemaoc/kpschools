@@ -10,14 +10,18 @@ exports.index = function(req, res){
   getDistricts(req, res);
 };
 
-
-if(connString == undefined) {
-     throw new Error("DB connection URL not set!!");
+function getDBConnectionURL() {
+    var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;
+    if(connString == undefined) {
+        console.log(connString);
+        throw new Error("DB connection URL not set!!");
+    }
+    return connString;
 }
 
 function getDistricts(req, res){
-    var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;
-    pg.connect(connString, function(err, client) {
+    
+    pg.connect(getDBConnectionURL(), function(err, client) {
     	// var sql = 'select ST_AsGeoJSON(geom) as shape from kpdistricts;'
     	var sql = 'select ST_AsGeoJSON(geom) as shape, NAME_2 as division, NAME_3 as district, shape_area from kpdistricts;';
  /*       var sql = 'select ST_AsGeoJSON(geog) as shape ';
@@ -49,8 +53,7 @@ function FeatureCollection(){
 }
 
 function getSchools(req, res, districts){
-    var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;
-    pg.connect(connString, function(err, client) {
+    pg.connect(getDBConnectionURL(), function(err, client) {
     	// var sql = 'select ST_AsGeoJSON(geom) as shape from kpdistricts;'
     	var sql = 'select  ST_AsGeoJSON(geom) as shape, schoolname, scode, status, gender, level, location, village, tehsil, district, boys, girls, teachstaff, nonteachin, coveredarea, water, electricity, classrooms, otherrooms, latrineusa, boudarywall from schools;';
  /*       var sql = 'select ST_AsGeoJSON(geog) as shape ';
@@ -107,8 +110,7 @@ exports.refreshSchools = function(req, res) {
 
     console.log(sql);
 
-    var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;
-    pg.connect(connString, function(err, client) {
+    pg.connect(getDBConnectionURL(), function(err, client) {
         client.query(sql, function(err, result) {
             var schools = new FeatureCollection();
             for (i = 0; i < result.rows.length; i++) {
