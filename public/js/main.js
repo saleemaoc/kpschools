@@ -93,11 +93,13 @@ $('#refresh-btn').on('click', function(e){
   console.log(checkedValues);
   $.post('/', {'checked': checkedValues}, function(response) {
       // Log the response to the console
-      console.log(response.schools);
-    if (markers != null) {
-      m.removeLayer(markers);
-    }
-    showSchools(response.schools);
+      console.log(response);
+      if(response.schools != undefined) {
+        if (markers != null) {
+          m.removeLayer(markers);
+        }
+        showSchools(response.schools);
+      }
   });
 
 });

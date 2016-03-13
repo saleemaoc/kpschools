@@ -78,6 +78,10 @@ exports.refreshSchools = function(req, res) {
     var clauseDict = {"girls": "gender='Girls'", "boys": "gender='Boys'", "primary": "level='Primary'", "middle": "level='Middle'", "high": "level=''High", "highersec": "level='Higher Secondary'", "functional": "status='Functional'", "closed": "status!='Functional'", "urban": "location='Urbon'", "rural": "location='Rural'"};
 
     var checked = req.param('checked');
+    if(checked == undefined) {
+        res.send('');
+        return;
+    }
     // console.log(checked);
 
     var whereClause = ' where ';

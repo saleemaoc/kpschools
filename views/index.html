@@ -23,22 +23,36 @@
     <h1 style="margin:10px 50px;">KP Schools</h1>
     <div style="width: 60%;margin:10% auto;" >
     
-      <input type="checkbox" class="checkbox" name="gender" value="girls" checked="true">Girls<br>
-      <input type="checkbox" class="checkbox" name="gender" value="boys">Boys<br>
+      <fieldset class="radiogroup">
+        <legend>School gender</legend>
+        <input type="radio" id="girlsradio" class="checkbox" name="gender" value="girls" checked="true">Girls<br>
+        <!-- <label for="girlsradio">Girls R</label> -->
+        <input type="radio" id="boysradio" class="checkbox" name="gender" value="boys">Boys<br>
+        <!-- <label for="boysradio">Boyds R</label> -->
+      </fieldset>
 
       <!-- level -->
-      <input type="checkbox" class="checkbox" name="level" value="primary">Primary Schools<br>
-      <input type="checkbox" class="checkbox" name="level" value="middle">Middle Schools<br>
-      <input type="checkbox" class="checkbox" name="level" value="high">High Schools<br>
-      <input type="checkbox" class="checkbox" name="level" value="highersec">Higher Secondary Schools<br>
+      <fieldset class="radiogroup">
+        <legend>School Level</legend>
+        <input type="radio" class="checkbox" name="level" value="primary">Primary Schools<br>
+        <input type="radio" class="checkbox" name="level" value="middle">Middle Schools<br>
+        <input type="radio" class="checkbox" name="level" value="high">High Schools<br>
+        <input type="radio" class="checkbox" name="level" value="highersec">Higher Secondary Schools<br>
+      </fieldset>
 
       <!-- status -->
-      <input type="checkbox" class="checkbox" name="status" value="functional">Functional<br>
-      <input type="checkbox" class="checkbox" name="status" value="closed">Temporary Closed<br>
+      <fieldset class="radiogroup">
+        <legend>School Status</legend>
+        <input type="radio" class="checkbox" name="status" value="functional">Functional<br>
+        <input type="radio" class="checkbox" name="status" value="closed">Temporary Closed<br>
+      </fieldset>
 
       <!-- location -->
-      <input type="checkbox" class="checkbox" name="location" value="urban">Urban<br>
-      <input type="checkbox" class="checkbox" name="location" value="rural">Rural<br>
+      <fieldset class="radiogroup">
+        <legend>School Location</legend>      
+        <input type="radio" class="checkbox" name="location" value="urban">Urban<br>
+        <input type="radio" class="checkbox" name="location" value="rural">Rural<br>
+      </fieldset>
 
       <input id="refresh-btn" class="btn" type="submit" value="Refresh"></submit>
       <input id="clear-btn" class="btn" type="submit" value="Clear Selection"></submit>
