@@ -2,42 +2,50 @@
 <html>
 <head>
   <meta charset='utf-8'/>
-
-  <title>Shapefile in Leaflet!</title>
   <style>
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0;}
       #map{ height: 100% }
   </style>
   <link rel="stylesheet" href="site/leaflet.css" />
+    <link rel="stylesheet" href="site/MarkerCluster.Default.css" />
   <!--[if lte IE 8]>
       <link rel="stylesheet" href="site/leaflet.ie.css" />
   <![endif]-->
 
-  <!-- <link rel="stylesheet" href="site/gh-fork-ribbon.css" /> -->
-  <!-- 
-  <script src="site/leaflet.js"></script>
-   -->
-
-  <!-- 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-40454900-1', 'calvinmetcalf.github.io');
-    ga('send', 'pageview');
-  </script>
-  -->
-
 </head>
 
 <body>
-  <div id="map"></div>
-  <script src="site/shp.min.js"> </script>
-<!-- 
-  <script src="site/dist/m.js">  </script>
- -->
+
+  <div id="rightpanel" style="width:25%;bg-color:red;float:left;">
+    
+      <input type="checkbox" name="gender" value="girls" checked="true">Girls<br>
+      <input type="checkbox" name="gender" value="boys">Boys<br>
+
+      <!-- level -->
+      <input type="checkbox" name="level" value="primary">Primary Schools<br>
+      <input type="checkbox" name="level" value="middle">Middle Schools<br>
+      <input type="checkbox" name="level" value="high">High Schools<br>
+      <input type="checkbox" name="level" value="highersec">Higher Secondary Schools<br>
+
+      <!-- status -->
+      <input type="checkbox" name="status" value="functional">Functional<br>
+      <input type="checkbox" name="status" value="closed">Temporary Closed<br>
+
+      <!-- location -->
+      <input type="checkbox" name="location" value="urban">Urban<br>
+      <input type="checkbox" name="location" value="rural">Rural<br>
+
+      <input id="refresh-btn" type="submit" value="Refresh"></submit>
+      <input id="clear-btn" type="submit" value="Clear Selection"></submit>
+
+
+    <!-- <p> Select districts </p> -->
+
+  </div>
+  <div id="map" style="width:70%;float:right;"></div>
+
+
 </body>
 </html>
 

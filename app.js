@@ -16,7 +16,6 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  // app.use(express.static(__dirname + '/public'));
   app.use('/site', express.static('site'));
   app.use(express.static('public'));
 });
@@ -32,6 +31,8 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+
+app.post('/', routes.refreshSchools);
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

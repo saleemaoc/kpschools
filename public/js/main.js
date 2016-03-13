@@ -5,7 +5,7 @@ var myStyle = {
 };
 
 var southWest = L.latLng(25.712, 62.227),
-northEast = L.latLng(44.774, 88.125),
+northEast = L.latLng(44.774, 76.125),
 bounds = L.latLngBounds(southWest, northEast);
 
 
@@ -53,8 +53,15 @@ shp(base).then(function(data){
 */
 
 
+
+var m= L.map('map', {maxBounds: bounds}).setView([34.1249883172,73.6328125], 7);
+/*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+  maxZoom: 18,
+  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+});
+tiles.addTo(m);
+*/
 function showDistricts(f) {
-  var m= L.map('map', {maxBounds: bounds}).setView([34.1249883172,73.6328125], 7);
   var geo = L.geoJson(
     {
       features: f.features
@@ -77,7 +84,65 @@ function showDistricts(f) {
           //   }
           l.bindPopup(popUpStr);
           // TODO fitbound the map to clicked polygon
+          // m.fitbounds()
         }
       }
     }).addTo(m);
 }
+
+var markers;
+var sJson;
+
+function showSchools(schools) {
+  sJson = L.geoJson(
+  {
+    features: schools.features
+  },
+  {
+    style: myStyle,
+
+    onEachFeature:function popUp(f,l){
+      var out = [];
+      // console.log(f);
+      if (f.properties){
+        for(var key in f.properties){
+          out.push(key.replace("_"," ") + ": " + f.properties[key]);
+        }
+        l.bindPopup(out.join('<br />'));
+      }
+    }
+  });
+  markers = new L.markerClusterGroup({
+    disableClusteringAtZoom: 13,
+    showCoverageOnHover: false,
+  });
+  markers.addLayer(sJson).addTo(m);
+  // sJson.addTo(m);
+
+}
+
+$('#refresh-btn').on('click', function(e){
+  var checkedValues = $('input:checkbox:checked').map(function() {
+    return this.value;
+  }).get();
+
+  console.log(checkedValues);
+  $.post('/', {'checked': checkedValues}, function(response) {
+      // Log the response to the console
+      console.log(response.schools);
+    if (markers != null) {
+      m.removeLayer(markers);
+    }
+    showSchools(response.schools);
+  });
+
+
+  // trigger filter
+});
+
+
+$('#clear-btn').on('click', function(e){
+  $('input:checkbox:checked').map(function() {
+    $(this).removeAttr('checked');
+  }).get();
+});
