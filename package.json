@@ -1,4 +1,4 @@
- {
+{
   "name": "kp-schools",
   "version": "1.0.0",
   "private": true,
@@ -21,9 +21,10 @@
     "bootstrap": "^3.3.6",
     "browserify": "^11.0.0",
     "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
     "grunt": "0.4.5",
     "grunt-cli": "0.1.13",
-    "chai-as-promised": "^5.1.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^1.0.0",
     "grunt-contrib-uglify": "1.0.0",
     "jshint": "^2.5.1",

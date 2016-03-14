@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         dest: 'site/dist/m.js'
       }
     },
-    cssmin: {
+/*    cssmin: {
       target: {
         files: [{
           expand: true,
@@ -22,13 +22,22 @@ module.exports = function(grunt) {
           ext: '.min.css'
         }]
       }
+    },*/
+    copy: {
+      main: {
+        files: [
+          // includes files within path
+          {expand: true, cwd: 'node_modules/bootstrap/dist/css', src: 'bootstrap.min.css', dest: 'site/dist/css'},
+        ],
+      },
     }
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'cssmin']);
+  grunt.registerTask('default', ['uglify', 'copy']);
 };
