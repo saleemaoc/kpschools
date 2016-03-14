@@ -4,15 +4,12 @@
   "private": true,
   "description": "Schools of Khyber Pakhtunkhwa on OSM",
   "scripts": {
-    "postinstall": "grunt uglify",
     "start": "node app.js"
   },
   "dependencies": {
     "express": "2.5.8",
-    "grunt": "0.4.5",
-    "grunt-cli": "0.1.13",
-    "grunt-contrib-uglify": "1.0.0",
     "jade": ">= 0.0.1",
+    "jquery": "^2.2.1",
     "jszip": "^2.4.0",
     "lie": "^2.7.6",
     "lru-cache": "^2.5.0",
@@ -21,9 +18,14 @@
     "proj4": "^2.1.0"
   },
   "devDependencies": {
+    "bootstrap": "^3.3.6",
     "browserify": "^11.0.0",
     "chai": "^3.3.0",
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13",
     "chai-as-promised": "^5.1.0",
+    "grunt-contrib-cssmin": "^1.0.0",
+    "grunt-contrib-uglify": "1.0.0",
     "jshint": "^2.5.1",
     "jszip": "^2.5.0",
     "lie": "^3.0.1",
@@ -46,11 +48,10 @@
     "Khyber",
     "Pakhtunkhwa",
     "GIS"
-  ],  
+  ],
   "author": {
     "name": "Saleem Ullah",
     "email": "saleem.ullah.88@gmail.com",
     "url": "https://www.linkedin.com/in/suaocs"
-  }  
+  }
 }
-

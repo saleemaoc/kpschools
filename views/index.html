@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset='utf-8'/>
-  <link rel="stylesheet" href="site/leaflet.css" />
-  <link rel="stylesheet" href="site/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="site/bootstrap-2.3.2.css" />
+  <link rel="stylesheet" href="site/dist/css/leaflet.css" />
+  <link rel="stylesheet" href="site/dist/css/MarkerCluster.Default.css" />
+  <link rel="stylesheet" href="site/dist/css/bootstrap.min.css" />
   <!--[if lte IE 8]>
       <link rel="stylesheet" href="site/leaflet.ie.css" />
   <![endif]-->
@@ -18,57 +18,88 @@
       #map{ 
         height: 100% 
       }
-      .legend {
-        margin: 5px;
-        color: red;
+      legend {
+        margin-bottom: 5px;
+        line-height: 20px;
       }
   </style>
 </head>
 
 <body>
 
-
   <div id="rightpanel" style="width:20%;bg-color:red;float:left;">
     <h3 style="margin:10px 50px;">KP Schools</h3>
-    <div style="width: 60%;margin:10px auto;" >
+    <div style="width: 70%;margin:10px auto;" >
     
       <fieldset class="radiogroup">
         <legend>School gender</legend>
-        <input type="radio" class="radio allradio" name="gender" value="allgender" checked="checked">All<br>
-        <input type="radio" class="radio" name="gender" value="girls">Girls<br>
-        <input type="radio" class="radio" name="gender" value="boys">Boys<br>
+        <span class="radio">
+          <input type="radio" class="radio allradio" name="gender" value="allgender" checked="checked">All
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="gender" value="girls">Girls
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="gender" value="boys">Boys
+        </span>
       </fieldset>
 
       <!-- level -->
       <fieldset class="radiogroup">
         <legend>School Level</legend>
-        <input type="radio" class="radio allradio" name="level" value="alllevel" checked="checked">All level<br>
-        <input type="radio" class="radio" name="level" value="primary">Primary Schools<br>
-        <input type="radio" class="radio" name="level" value="middle">Middle Schools<br>
-        <input type="radio" class="radio" name="level" value="high">High Schools<br>
-        <input type="radio" class="radio" name="level" value="highersec">Higher Secondary Schools<br>
+        <span class="radio">
+          <input type="radio" class="radio allradio" name="level" value="alllevel" checked="checked">All level
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="level" value="primary">Primary Schools
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="level" value="middle">Middle Schools
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="level" value="high">High Schools
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="level" value="highersec">Higher Secondary Schools
+        </span>
 
       </fieldset>
 
       <!-- status -->
       <fieldset class="radiogroup">
         <legend>School Status</legend>
-        <input type="radio" class="radio allradio" name="status" value="allstatus" checked="checked">All status<br>
-        <input type="radio" class="radio" name="status" value="functional">Functional<br>
-        <input type="radio" class="radio" name="status" value="closed">Temporary Closed<br>
+        <span class="radio">
+        <input type="radio" class="radio allradio" name="status" value="allstatus" checked="checked">All status
+        </span>
+        <span class="radio">
+        <input type="radio" class="radio" name="status" value="functional">Functional
+        </span>
+        <span class="radio">
+        <input type="radio" class="radio" name="status" value="closed">Temporary Closed
+        </span>
       </fieldset>
 
       <!-- location -->
       <fieldset class="radiogroup">
-        <legend>School Location</legend>      
-        <input type="radio" class="radio allradio" name="location" value="alllocation" checked="checked">All locations<br>
-        <input type="radio" class="radio" name="location" value="urban">Urban<br>
-        <input type="radio" class="radio" name="location" value="rural">Rural<br>
+        <legend>School Location</legend>    
+        <span class="radio">
+          <input type="radio" class="radio allradio" name="location" value="alllocation" checked="checked">All locations
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="location" value="urban">Urban
+        </span>
+        <span class="radio">
+          <input type="radio" class="radio" name="location" value="rural">Rural
+        </span>
       </fieldset>
 
       <div style="margin-top:10px;">      
-        <input id="refresh-btn" class="btn" type="submit" value="Refresh"></submit>
-        <input id="clear-btn" class="btn" type="submit" value="Clear"></submit>
+        <button id="refresh-btn" class="btn btn-default" value="Refresh">
+          <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+        </button>
+        <button id="clear-btn" class="btn btn-default" value="Clear">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
       </div>
 
 
