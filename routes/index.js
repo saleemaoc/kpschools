@@ -78,6 +78,10 @@ function getSchools(req, res, districts){
 });
 }
 
+function startsWith(s1, s2) {
+  return (s1.length >= s2.length && s1.substr(0, s2.length) == s2);
+}
+
 exports.refreshSchools = function(req, res) {
     //["girls", "boys", "primary", "middle", "high", "highersec", "functional", "closed", "urban", "rural"]
     var sql = 'select  ST_AsGeoJSON(geom) as shape, schoolname, scode, status, gender, level, location, village, tehsil, district, boys, girls, teachstaff, nonteachin, coveredarea, water, electricity, classrooms, otherrooms, latrineusa, boudarywall from schools';
@@ -89,7 +93,7 @@ exports.refreshSchools = function(req, res) {
         return;
     }
     checked = checked.filter(function(v) { 
-        if(!v.startsWith("all")) {
+        if(!startsWith(v,"all")) {
             return v;
         }
     });
