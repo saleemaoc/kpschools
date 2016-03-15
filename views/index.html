@@ -1,115 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset='utf-8'/>
-  <link rel="stylesheet" href="/site/dist/css/leaflet.css" />
-  <link rel="stylesheet" href="/site/dist/css/MarkerCluster.Default.css" />
-  <link rel="stylesheet" href="/site/dist/css/bootstrap.min.css" />
-  <!--[if lte IE 8]>
-      <link rel="stylesheet" href="site/leaflet.ie.css" />
-  <![endif]-->
+<div id="rightpanel" style="width:20%;float:left;">
+  <h3 style="margin:10px 50px;">KP Schools</h3>
+  <div style="width: 70%;margin:10px auto;" >
+  
+    <fieldset class="radiogroup">
+      <legend>School gender</legend>
+      <span class="radio">
+        <input type="radio" class="radio allradio" name="gender" value="allgender" checked="checked">All
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="gender" value="girls">Girls
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="gender" value="boys">Boys
+      </span>
+    </fieldset>
 
-  <style>
-      html { height: 100% }
-      body {
-       height: 100%;
-       margin: 0; padding: 0;
-     }
-      #map{ 
-        height: 100% 
-      }
-      legend {
-        margin-bottom: 5px;
-        line-height: 20px;
-      }
-  </style>
-</head>
+    <!-- level -->
+    <fieldset class="radiogroup">
+      <legend>School Level</legend>
+      <span class="radio">
+        <input type="radio" class="radio allradio" name="level" value="alllevel" checked="checked">All level
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="level" value="primary">Primary Schools
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="level" value="middle">Middle Schools
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="level" value="high">High Schools
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="level" value="highersec">Higher Secondary Schools
+      </span>
 
-<body>
+    </fieldset>
 
-  <div id="rightpanel" style="width:20%;bg-color:red;float:left;">
-    <h3 style="margin:10px 50px;">KP Schools</h3>
-    <div style="width: 70%;margin:10px auto;" >
-    
-      <fieldset class="radiogroup">
-        <legend>School gender</legend>
-        <span class="radio">
-          <input type="radio" class="radio allradio" name="gender" value="allgender" checked="checked">All
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="gender" value="girls">Girls
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="gender" value="boys">Boys
-        </span>
-      </fieldset>
+    <!-- status -->
+    <fieldset class="radiogroup">
+      <legend>School Status</legend>
+      <span class="radio">
+      <input type="radio" class="radio allradio" name="status" value="allstatus" checked="checked">All status
+      </span>
+      <span class="radio">
+      <input type="radio" class="radio" name="status" value="functional">Functional
+      </span>
+      <span class="radio">
+      <input type="radio" class="radio" name="status" value="closed">Temporary Closed
+      </span>
+    </fieldset>
 
-      <!-- level -->
-      <fieldset class="radiogroup">
-        <legend>School Level</legend>
-        <span class="radio">
-          <input type="radio" class="radio allradio" name="level" value="alllevel" checked="checked">All level
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="level" value="primary">Primary Schools
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="level" value="middle">Middle Schools
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="level" value="high">High Schools
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="level" value="highersec">Higher Secondary Schools
-        </span>
+    <!-- location -->
+    <fieldset class="radiogroup">
+      <legend>School Location</legend>    
+      <span class="radio">
+        <input type="radio" class="radio allradio" name="location" value="alllocation" checked="checked">All locations
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="location" value="urban">Urban
+      </span>
+      <span class="radio">
+        <input type="radio" class="radio" name="location" value="rural">Rural
+      </span>
+    </fieldset>
 
-      </fieldset>
-
-      <!-- status -->
-      <fieldset class="radiogroup">
-        <legend>School Status</legend>
-        <span class="radio">
-        <input type="radio" class="radio allradio" name="status" value="allstatus" checked="checked">All status
-        </span>
-        <span class="radio">
-        <input type="radio" class="radio" name="status" value="functional">Functional
-        </span>
-        <span class="radio">
-        <input type="radio" class="radio" name="status" value="closed">Temporary Closed
-        </span>
-      </fieldset>
-
-      <!-- location -->
-      <fieldset class="radiogroup">
-        <legend>School Location</legend>    
-        <span class="radio">
-          <input type="radio" class="radio allradio" name="location" value="alllocation" checked="checked">All locations
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="location" value="urban">Urban
-        </span>
-        <span class="radio">
-          <input type="radio" class="radio" name="location" value="rural">Rural
-        </span>
-      </fieldset>
-
-      <div style="margin-top:10px;">      
-        <button id="refresh-btn" class="btn btn-default" value="Refresh">
-          <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
-        </button>
-        <button id="clear-btn" class="btn btn-default" value="Clear">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-      </div>
-
-
-      <!-- <p> Select districts </p> -->
-
+    <div style="margin-top:10px;">      
+      <button id="refresh-btn" class="btn btn-default" value="Refresh">
+        <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+      </button>
+      <button id="clear-btn" class="btn btn-default" value="Clear">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+      </button>
     </div>
+
   </div>
-  <div id="map" style="width:75%;float:right;"></div>
-
-
-</body>
-</html>
-
+</div>
+<div id="map" style="width:75%;float:right;"></div>

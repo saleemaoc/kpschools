@@ -3,13 +3,19 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'public/js/main.js',
-        dest: 'site/dist/m.js'
+        files: {
+         'site/dist/js/app.js': 'public/js/main.js',
+         'site/dist/js/leaflet.min.js': 'node_modules/leaflet/dist/leaflet.js',
+         'site/dist/js/markercluster.min.js': 'node_modules/leaflet.markercluster/dist/leaflet.markercluster.js',
+        }
+        // src: 'public/js/main.js',
+        // dest: 'site/dist/js/app.js'
       }
     },
 /*    cssmin: {
@@ -28,6 +34,7 @@ module.exports = function(grunt) {
         files: [
           // includes files within path
           {expand: true, cwd: 'node_modules/bootstrap/dist/css', src: 'bootstrap.min.css', dest: 'site/dist/css'},
+          {expand: true, cwd: 'node_modules/jquery/dist', src: 'jquery.min.js', dest: 'site/dist/js'},
         ],
       },
     }

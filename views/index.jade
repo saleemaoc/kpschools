@@ -1,16 +1,13 @@
 //h1= title
 //p Welcome to #{title}
 
-//p Features are #{districts}
-
 include index.html
 
-script(src="/site/leaflet.js")
-script(src="/site/leaflet.markercluster-0.7.js")
-script(src="/site/jquery-1.7.2.min.js")
-script(src="/site/jquery-ui-1.8.21.min.js")
+script(src="/site/dist/js/jquery.min.js")
+script(src="/site/dist/js/leaflet.min.js")
+script(src="/site/dist/js/markercluster.min.js")
+script(src="/site/dist/js/app.js")
 
-script(src="/js/main.js")
 
 script.
 	showDistricts(!{JSON.stringify(districts)})
