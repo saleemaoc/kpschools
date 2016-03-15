@@ -31,8 +31,9 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-
-app.post('/', routes.refreshSchools);
+app.get('/districts', routes.districts);
+app.get('/schools', routes.schools);
+app.post('/schools', routes.filterSchools);
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
 var ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";

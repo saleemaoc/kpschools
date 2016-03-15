@@ -1,3 +1,15 @@
+$(document).ready(function(){
+  // get districts
+  console.log('getting districts');
+  $.get('/districts', function(response) {
+    console.log(response);
+    if(response !== undefined) {
+      showDistricts(response);
+      console.log('districts loaded');
+    }
+  });
+});
+
 var myStyle = {
     "color": "#ff7800",
     "weight": 2,
@@ -31,8 +43,8 @@ function showDistricts(f) {
         if (f.properties){
 
           var province = 'Khyber Pakhtunkhwa';
-          var division = f.properties['division']//: Malakand
-          var district = f.properties['district']//: Swat
+          var division = f.properties.division;// Malakand
+          var district = f.properties.district;//: Swat
 
           var popUpStr = "District: " + district + "<br />Division: " + division + "<br /> Province: " + province;
             // for(var key in f.properties){
@@ -97,8 +109,8 @@ $('#refresh-btn').on('click', function(e){
       // Log the response to the console
       console.log('response');
       console.log(response);
-      if(response.schools != undefined) {
-        if (markers != null) {
+      if(response.schools !== undefined) {
+        if (markers !== null) {
           m.removeLayer(markers);
         }
         showSchools(response.schools);
