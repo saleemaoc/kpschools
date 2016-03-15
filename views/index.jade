@@ -1,14 +1,39 @@
 //h1= title
 //p Welcome to #{title}
 
+script(src="/site/dist/js/jquery.min.js")
+script(src="/site/dist/js/spin.min.js")
+script(src="/site/dist/js/ladda.min.js")
+
+
 include index.html
 
-script(src="/site/dist/js/jquery.min.js")
+link(rel='stylesheet', href='/stylesheets/style.css')
+link(rel="stylesheet", href="/site/dist/css/leaflet.css")
+link(rel="stylesheet", href="/site/dist/css/MarkerCluster.Default.css")
+link(rel="stylesheet", href="/site/dist/css/bootstrap.min.css")
+link(rel="stylesheet", href="/site/dist/css/ladda.min.css")
+<!--[if lte IE 8]>link(rel="stylesheet", href="site/leaflet.ie.css")<![endif]-->
+
+style.
+  html { height: 100% }
+  body {
+   height: 100%;
+   margin: 0; padding: 0;
+  }
+  #map{ 
+    height: 100% 
+  }
+  legend {
+    margin-bottom: 5px;
+    line-height: 20px;
+  }
+
 script(src="/site/dist/js/leaflet.min.js")
 script(src="/site/dist/js/markercluster.min.js")
 script(src="/site/dist/js/app.js")
 
 
 //script.
-	//showDistricts(!{JSON.stringify(districts)})
-	//showSchools(!{JSON.stringify(schools)})
+    //showDistricts(!{JSON.stringify(districts)})
+    //showSchools(!{JSON.stringify(schools)})

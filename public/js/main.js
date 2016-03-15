@@ -1,12 +1,16 @@
 $(document).ready(function(){
   // get districts
   console.log('getting districts');
+  var l = Ladda.create($('#refresh-btn')[0]);
+  l.start();
+
   $.get('/districts', function(response) {
     console.log(response);
     if(response !== undefined) {
       showDistricts(response);
       console.log('districts loaded');
     }
+    l.stop();
   });
 
   $.get('/schools', function(response) {
@@ -113,16 +117,19 @@ $('#refresh-btn').on('click', function(e){
   }).get();
 
   console.log(checkedValues);
-  $.post('/', {'checked': checkedValues}, function(response) {
-      // Log the response to the console
-      console.log('response');
-      console.log(response);
-      if(response.schools !== undefined) {
-        if (markers !== null) {
-          m.removeLayer(markers);
-        }
-        showSchools(response.schools);
+  var l = Ladda.create($('#refresh-btn')[0]);
+  l.start();
+  $.post('/schools', {'checked': checkedValues}, function(response) {
+    // Log the response to the console
+    console.log('response');
+    console.log(response);
+    if(response !== undefined) {
+      if (markers !== null) {
+        m.removeLayer(markers);
       }
+      showSchools(response);
+    }
+    l.stop();
   });
 
 });

@@ -38,8 +38,20 @@ module.exports = function(grunt) {
       main: {
         files: [
           // includes files within path
-          {expand: true, cwd: 'node_modules/bootstrap/dist/css', src: 'bootstrap.min.css', dest: 'site/dist/css'},
-          {expand: true, cwd: 'node_modules/jquery/dist', src: 'jquery.min.js', dest: 'site/dist/js'},
+          {
+            expand: true,
+            flatten: true,
+            cwd: 'node_modules/',
+            src: ['bootstrap/dist/css/bootstrap.min.css','ladda/dist/ladda.min.css'],
+            dest: 'site/dist/css'
+          },
+          {
+            expand: true,
+            cwd: 'node_modules/',
+            src: ['jquery/dist/jquery.min.js','ladda/dist/spin.min.js', 'ladda/dist/ladda.min.js'],
+            dest: 'site/dist/js',
+            flatten: true
+          },
         ],
       },
     },
@@ -68,7 +80,7 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['uglify:build_main', 'jshint']);
-  grunt.registerTask('buildall', ['uglify', 'jshint', 'copy'])
+  grunt.registerTask('buildall', ['uglify', 'copy']);
 
   grunt.event.on('watch', function(action, filepath, target) {
     grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
