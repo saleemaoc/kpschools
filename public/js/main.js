@@ -8,6 +8,14 @@ $(document).ready(function(){
       console.log('districts loaded');
     }
   });
+
+  $.get('/schools', function(response) {
+    console.log(response);
+    if(response !== undefined) {
+      showSchools(response);
+      console.log('schools loaded');
+    }
+  });  
 });
 
 var myStyle = {
