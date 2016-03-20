@@ -6,3 +6,25 @@ body {
 a {
   color: #00B7FF;
 }
+
+#side-panel {
+	width: 25%;
+	float:left;
+}
+
+#map {
+	width: 75%;
+	float: right;
+}
+
+
+@media screen and (max-width: 1024px) {
+	#side-panel {
+		display: none;
+	}
+
+	#map {
+		width: 100%;
+		float: clear;
+	}
+}
