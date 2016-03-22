@@ -22,6 +22,42 @@ $(document).ready(function(){
   });  
 });
 
+(function($) {
+  $.fn.spin = function(opts, color) {
+    var presets = {
+      "tiny": { lines: 8, length: 2, width: 2, radius: 3 },
+      "small": { lines: 10, length: 4, width: 4, radius: 6 },
+      "large": { lines: 10, length: 8, width: 4, radius: 8 }
+    };
+    if (Spinner) {
+      return this.each(function() {
+        var $this = $(this),
+          data = $this.data();
+        
+        if (data.spinner) {
+          data.spinner.stop();
+          delete data.spinner;
+        }
+        if (opts !== false) {
+          if (typeof opts === "string") {
+            if (opts in presets) {
+              opts = presets[opts];
+            } else {
+              opts = {};
+            }
+            if (color) {
+              opts.color = color;
+            }
+          }
+          data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
+        }
+      });
+    } else {
+      throw "Spinner class not available.";
+    }
+  };
+})(jQuery);
+
 var myStyle = {
     "color": "#ff7800",
     "weight": 2,
@@ -33,14 +69,14 @@ northEast = L.latLng(44.774, 76.125),
 bounds = L.latLngBounds(southWest, northEast);
 
 
-var m= L.map('map', {maxBounds: bounds, maxZoom:19}).setView([33.0999,71.1328], 10);
+var m= L.map('map', {maxBounds: bounds, maxZoom:19}).setView([33.0999,71.1328], 9);
 
 /*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
-tiles.addTo(m);
-*/
+tiles.addTo(m);*/
+
 function showDistricts(f) {
   var geo = L.geoJson(
     {
