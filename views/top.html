@@ -4,7 +4,107 @@
     <div class="navbar-header">
       <span class="navbar-brand">KP Mapped</span>
     </div>
-    <div id="spinner"></div>
 
-  </div><!-- /.container-fluid -->
+    <div class="btn-toolbar" style="float:right;height:10%;">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Girls</span>
+                <input type="radio" class="radio" name="gender" value="girls" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Boys</span>
+                <input type="radio" class="radio" name="gender" value="boys">
+            </button>
+     
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>All</span>
+                <input type="radio" class="radio allradio" name="gender" value="allgender" checked />
+            </button>
+        </div>
+
+
+        <div class="btn-group">
+     
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Primary</span>
+                <input type="radio" class="radio" name="level" value="primary" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Middle</span>
+                <input type="radio" class="radio" name="level" value="middle" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>High</span>
+                <input type="radio" class="radio" name="level" value="high" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Higher Secondary</span>
+                <input type="radio" class="radio" name="level" value="highersec" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>All</span>
+                <input type="radio" class="radio allradio" name="level" value="alllevel" checked/>
+            </button>
+        </div>
+
+
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Functional</span>
+                <input type="radio" class="radio" name="status" value="functional" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Closed</span>
+                <input type="radio" class="radio" name="status" value="closed" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>All</span>
+                <input type="radio" class="radio allradio" name="status" value="allstatus" checked="checked" />
+            </button>
+     
+        </div>
+
+
+        <div class="btn-group">
+     
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Urban</span>
+                <input type="radio" class="radio" name="location" value="urban" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>Rural</span>
+                <input type="radio" class="radio" name="location" value="rural" />
+            </button>
+
+            <button type="button" class="btn btn-default navbar-btn">
+                <span>All</span>
+                <input type="radio" class="radio allradio" name="location" value="alllocation" checked="checked" />
+            </button>
+        </div>
+
+        <div class="btn-group" style="margin-left:20px;">
+          <button id="refresh-btn" class="btn navbar-btn ladda-button" data-size="xs" data-color="red" data-style="slide-up">
+            <!-- <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> -->
+            <span class="label ladda-label">Submit</span>
+            <span class="ladda-spinner"></span>
+          </button>
+          <button id="clear-btn" class="btn navbar-btn ladda-button" data-size="xs" data-color="red" data-style="slide-up">
+            <!-- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
+            <span class="label ladda-label">Reset</span>
+          </button>
+        </div>
+
+        <div id="spinner"></div>
+    </div>
+
+  </div>
 </nav>

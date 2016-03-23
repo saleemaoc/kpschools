@@ -16,7 +16,7 @@ exports.districts = function(req, res) {
             var districts = new FeatureCollection();
             for (i = 0; i < result.rows.length; i++) {
                 districts.features[i] = JSON.parse(result.rows[i].shape);
-                districts.features[i]['properties'] = {'district': result.rows[i].district, 'division':  result.rows[i].division }
+                districts.features[i]['properties'] = {'district': result.rows[i].district, 'division':  result.rows[i].division, 'area': result.rows[i].shape_area }
             }
             res.send(districts);
             //res.render('index', {title: 'KP Schools', features: districts })
@@ -80,6 +80,25 @@ function getSchools(sql, cb) {
         });
     });
 }
+
+exports.healthUnits = function(req, res){
+    // var sql = 'select ST_AsGeoJSON(geom) as shape from kpdistricts;'
+    var sql = 'select ST_AsGeoJSON(geom) as shape, inst_name as name, district, tehsil, type, beds, locality, status, lat, long as lon from kphealth;';
+    pg.connect(getDBConnectionURL(), function(err, client) {
+        client.query(sql, function(err, result) {
+            var hu = new FeatureCollection();
+            for (i = 0; i < result.rows.length; i++) {
+                hu.features[i] = JSON.parse(result.rows[i].shape);
+                hu.features[i]['properties'] = {'Name': result.rows[i].name, 'Type': result.rows[i].type, 'Beds':result.rows[i].beds, 'Status': result.rows[i].status, 'Tehsil': result.rows[i].tehsil, 'District': result.rows[i].district, 'Locality': result.rows[i].locality, 'Village': result.rows[i].village, 'Tehsil': result.rows[i].tehsil, 'District': result.rows[i].district, 'Boys': result.rows[i].boys, 'Girls': result.rows[i].girls, 'Teaching_Staff': result.rows[i].teachstaff, 'Nonteaching_Staff': result.rows[i].nonteachin, 'Covered_Area': result.rows[i].coveredarea, 'Water': result.rows[i].water, 'Electricity': result.rows[i].electricity, 'Classrooms': result.rows[i].classrooms, 'Other_Rooms': result.rows[i].otherrooms, 'Latrine': result.rows[i].latrineusa, 'Boundary_Wall': result.rows[i].boudarywall}
+            }
+            res.send(hu);
+        });
+    });
+}
+
+// ('0.000000','BHU Khurram','Karak','Banda Dawood Shah','BASIC HEALTH UNITS','1','-','R','Functional','0','3.32150000000e+001','7.10410000000e+001','0101000000B4C876BE9FC25140EC51B81E859B4040');
+''
+
 
 function getDBConnectionURL() {
     var connString = process.env.OPENSHIFT_POSTGRESQL_DB_URL || process.env.DATABASE_URL;

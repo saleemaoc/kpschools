@@ -1,40 +1,54 @@
+html { height: 100% }
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0; padding: 0;
+    background-color: #f8f8f8;
+    overflow: hidden;
 }
+
+
+legend {
+    margin-bottom: 5px;
+    line-height: 20px;
+}
+
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
 
-#side-panel {
-	width: 25%;
-	float:left;
+.side-panel {
+    width: 25%;
+    float:left;
+    display: none;
 }
 
 #map {
-	width: 75%;
-	float: right;
+    width: 100%;
+    height: 90%;
 }
 
 #spinner {
-	/*width: 100%;*/
-	position: fixed;
-	top: 4%;
-	right: 2%;
+    width: 100%;
+    position: fixed;
+    top: 4%;
+    right: 2%;
 }
 
 .navbar {
-	margin-bottom: 0px;
+    margin-bottom: 0px;
 }
 
 @media screen and (max-width: 1024px) {
-	#side-panel {
-		display: none;
-	}
+    .side-panel {
+        display: none;
+    }
 
-	#map {
-		width: 100%;
-		float: clear;
-	}
+    #map {
+        width: 100%;
+        float: clear;
+    }
 }

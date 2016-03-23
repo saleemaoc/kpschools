@@ -60,7 +60,7 @@ module.exports = function(grunt) {
         livereload: true,
       },
       scripts: {
-        files: ['public/js/main.js', 'app.js', 'routes/index.js'],
+        files: ['public/js/main.js', 'app.js', 'routes/index.js', 'public/stylesheets/style.css'],
         tasks: ['default'],
         options: {
           spawn: false,

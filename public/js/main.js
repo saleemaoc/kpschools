@@ -1,27 +1,3 @@
-$(document).ready(function(){
-  // get districts
-  console.log('getting districts');
-  var l = Ladda.create($('#refresh-btn')[0]);
-  l.start();
-
-  $.get('/districts', function(response) {
-    console.log(response);
-    if(response !== undefined) {
-      showDistricts(response);
-      console.log('districts loaded');
-    }
-    l.stop();
-  });
-
-  $.get('/schools', function(response) {
-    console.log(response);
-    if(response !== undefined) {
-      showSchools(response);
-      console.log('schools loaded');
-    }
-  });  
-});
-
 (function($) {
   $.fn.spin = function(opts, color) {
     var presets = {
@@ -58,13 +34,47 @@ $(document).ready(function(){
   };
 })(jQuery);
 
+$(document).ready(function(){
+  // get districts
+  console.log('getting districts');
+  var l = Ladda.create($('#refresh-btn')[0]);
+  l.start();
+
+  $.get('/districts', function(response) {
+    console.log(response);
+    if(response !== undefined) {
+      showDistricts(response);
+      console.log('districts loaded');
+    }
+    l.stop();
+  });
+
+  $.get('/schools', function(response) {
+    console.log(response);
+    if(response !== undefined) {
+      showSchools(response);
+      console.log('schools loaded');
+    }
+  });
+
+/*  $.get('/healthunits', function(response) {
+    console.log(response);
+    if(response !== undefined) {
+      showHealthUnits(response);
+      console.log('health units loaded');
+    }
+  });
+*/
+});
+
+
 var myStyle = {
-    "color": "#ff7800",
-    "weight": 2,
-    "opacity": 0.7
+    "color": "#ea8557",
+    "weight": 1,
+    "opacity": 0.3
 };
 
-var southWest = L.latLng(25.712, 62.227),
+var southWest = L.latLng(25.712, 67.227),
 northEast = L.latLng(44.774, 76.125),
 bounds = L.latLngBounds(southWest, northEast);
 
@@ -93,8 +103,9 @@ function showDistricts(f) {
           var province = 'Khyber Pakhtunkhwa';
           var division = f.properties.division;// Malakand
           var district = f.properties.district;//: Swat
+          var area = f.properties.area;
 
-          var popUpStr = "District: " + district + "<br />Division: " + division + "<br /> Province: " + province;
+          var popUpStr = "District: " + district + "<br />Area: " + area + "<br />Division: " + division + "<br /> Province: " + province;
             // for(var key in f.properties){
           //    out.push(key+": "+f.properties[key]);
           //   }
@@ -137,13 +148,47 @@ function showSchools(schools) {
     }
   });
   markers = new L.markerClusterGroup({
+    disableClusteringAtZoom: 12,
+    showCoverageOnHover: true,
+  });
+
+  if (markers !== null) {
+    m.removeLayer(markers);
+  }
+  markers.addLayer(sJson).addTo(m);
+}
+
+
+function showHealthUnits(hunits) {
+  var hJson = L.geoJson(
+  {
+    features: hunits.features
+  },
+  {
+    style: myStyle,
+
+    onEachFeature:function popUp(f,l){
+      var out = [];
+      // console.log(f);
+      if (f.properties){
+        for(var key in f.properties){
+          out.push(key + " : " + f.properties[key]);
+        }
+        l.bindPopup(out.join('<br />'));
+      }
+    }
+  });
+  markers = new L.markerClusterGroup({
     disableClusteringAtZoom: 13,
     showCoverageOnHover: true,
   });
-  markers.addLayer(sJson).addTo(m);
+  if (markers !== null) {
+    m.removeLayer(markers);
+  }
+  markers.addLayer(hJson).addTo(m);
   // sJson.addTo(m);
-
 }
+
 
 $('#refresh-btn').on('click', function(e){
   var checkedValues = $('input:radio:checked').map(function() {
