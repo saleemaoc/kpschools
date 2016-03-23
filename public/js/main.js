@@ -151,9 +151,9 @@ function showSchools(schools) {
           size='m';
         }
         if(f.properties['Gender'] === 'Boys') {
-          l.setIcon(L.MakiMarkers.icon({icon: "school", color: "#0bb", size: size}));
+          l.setIcon(L.MakiMarkers.icon({icon: "school", color: "#00cdcd", size: size})); // cyan
         } else {
-          l.setIcon(L.MakiMarkers.icon({icon: "school", color: "#b0b", size: size}));
+          l.setIcon(L.MakiMarkers.icon({icon: "school", color: "#68228b", size: size}));//dark orchid
         }
         
         // console.log(l.options.icon);

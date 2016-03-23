@@ -4,6 +4,13 @@ A GIS-based web application for all govt schools in Khyber Pakhtunkhwa.
 
 This application lists all the schools on an interactive map. The map shows administrative boundaries of all districts in KP. Clicking on a district polygon will show basic information about that district. The schools in a district will be shown by various markers depending on the school type and level.
 
+Cyan color markers show Boys schools
+Dark orchid color markers show girls schools
+
+Small size markers show primary schools
+Medium size markers show Middle schools
+Large size markers show High and Higher Secondary schools
+
 For each school, the application will show the following information:
 School name, school code, school level, functioning status, village, post office, union council, tehsil, district, no. of students, no. of staff (teaching + non-teaching), covered area, and school facilities like water, electricity etc.
 
