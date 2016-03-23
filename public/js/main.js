@@ -241,7 +241,6 @@ function closeDialog() {
     Avgrund.hide();
 }
 
-
 function toggleMenu() {
   var el = $('.btn-toolbar');
   if(el.hasClass('expand')) {
@@ -257,7 +256,7 @@ $('.menu-btn').on('click', function(e){
   toggleMenu();
 });
 
-$('#about').on('click', function(e){
+$('#sabout').on('click', function(e){
     Avgrund.show( "#about-box" );
 });
 
@@ -269,4 +268,25 @@ $('#clear-btn').on('click', function(e){
   //$.get('/', function(data, status){console.log('status: ' + status)});
 */  location.reload(true);
 
+});
+
+
+$('#about').on('click', function(event){
+  event.preventDefault();
+  if($('.cd-panel').hasClass('is-visible')) {
+    $('.cd-panel').removeClass('is-visible');
+  } else {
+    $('.cd-panel').addClass('is-visible');
+  }
+});
+
+$("#map").on('click', function(e){
+  $('.cd-panel').removeClass('is-visible');
+});
+
+$('.cd-panel').on('click', function(event){
+  if( $(event.target).is('.cd-panel') || $(event.target).is('.cd-panel-close') ) { 
+    $('.cd-panel').removeClass('is-visible');
+    event.preventDefault();
+  }
 });
