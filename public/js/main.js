@@ -36,12 +36,11 @@
 
 $(document).ready(function(){
   // get districts
-  console.log('getting districts');
   var l = Ladda.create($('#refresh-btn')[0]);
   l.start();
 
   $.get('/districts', function(response) {
-    console.log(response);
+    // console.log(response);
     if(response !== undefined) {
       showDistricts(response);
       console.log('districts loaded');
@@ -50,7 +49,7 @@ $(document).ready(function(){
   });
 
   $.get('/schools', function(response) {
-    console.log(response);
+    // console.log(response);
     if(response !== undefined) {
       showSchools(response);
       console.log('schools loaded');
@@ -80,12 +79,11 @@ bounds = L.latLngBounds(southWest, northEast);
 
 
 var m= L.map('map', {maxBounds: bounds, maxZoom:19}).setView([33.0999,71.1328], 9);
-
-/*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
-tiles.addTo(m);*/
+tiles.addTo(m);
 
 function showDistricts(f) {
   var geo = L.geoJson(
@@ -97,33 +95,19 @@ function showDistricts(f) {
 
       onEachFeature:function popUp(f,l){
         var out = [];
-        // console.log(f);
         if (f.properties){
 
           var province = 'Khyber Pakhtunkhwa';
-          var division = f.properties.division;// Malakand
-          var district = f.properties.district;//: Swat
+          var division = f.properties.division;
+          var district = f.properties.district;
           var area = f.properties.area;
 
           var popUpStr = "District: " + district + "<br />Area: " + area + "<br />Division: " + division + "<br /> Province: " + province;
-            // for(var key in f.properties){
-          //    out.push(key+": "+f.properties[key]);
-          //   }
           l.bindPopup(popUpStr);
-          // TODO fitbound the map to clicked polygon
-          // m.fitbounds()
         }
       }
     }).addTo(m);
 }
-
-/*
-var base = 'files/kp.zip';
-
-shp(base).then(function(data){
-  geoJson.addData(data[2]);
-});
-*/
 
 var markers;
 var sJson;
@@ -155,9 +139,6 @@ function showSchools(schools) {
         } else {
           l.setIcon(L.MakiMarkers.icon({icon: "school", color: "#68228b", size: size}));//dark orchid
         }
-        
-        // console.log(l.options.icon);
-        // l.options.icon = return L.MakiMarkers.icon({icon: "rocket", color: "#b0b", size: "m"});
       }
     }
   });
@@ -209,9 +190,7 @@ function showHealthUnits(hunits) {
 
 $('#refresh-btn').on('click', function(e){
   var checkedValues = $('input:radio:checked').map(function() {
-    // if(!this.value.startsWith("all")) {
       return this.value;
-    // }
   }).get();
 
   // hide menu and show map, if map hidden
@@ -219,13 +198,12 @@ $('#refresh-btn').on('click', function(e){
     toggleMenu();
   }
 
-  console.log(checkedValues);
+  // console.log(checkedValues);
   var l = Ladda.create($('#refresh-btn')[0]);
   l.start();
   $.post('/schools', {'checked': checkedValues}, function(response) {
     // Log the response to the console
     console.log('response');
-    console.log(response);
     if(response !== undefined) {
       if (markers !== null) {
         m.removeLayer(markers);
@@ -261,12 +239,7 @@ $('#sabout').on('click', function(e){
 });
 
 $('#clear-btn').on('click', function(e){
-/*  $('input:radio:checked').map(function() {
-    $(this).removeAttr('checked');
-  }).get();
-  $('.allradio').map(function(){$(this).attr('checked','checked')});
-  //$.get('/', function(data, status){console.log('status: ' + status)});
-*/  location.reload(true);
+  location.reload(true);
 
 });
 

@@ -25,6 +25,15 @@ Gender: Boys, Girls
 
 A ranking score is calculated for each school based on the students to teachers ration, students to classrooms ratio, area covered, facilities. This score is represented through thematic markers where green shows high ranked schools and red shows lower ranked schools.
 
+### Usage
+[todo include db migrations]
+```
+git clone
+cd 
+npm install
+npm start
+```
+Open `http://localhost:3000` in your browser
 
 ## Browser support
 
@@ -32,9 +41,9 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 ## Todos
 
-Android app for teachers to update schools data
-Urdu language support
-Test coverage
+* Urdu language support
+* Test coverage
+* Documentation
 
 ## License
 
