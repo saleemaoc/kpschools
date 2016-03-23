@@ -38,6 +38,4 @@ Test coverage
 
 ## License
 
-MIT licensed
-
-Copyright (C) 2016
+MIT: http://suaoc.mit-license.org/
