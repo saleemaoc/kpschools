@@ -215,6 +215,13 @@ $('#refresh-btn').on('click', function(e){
 
 });
 
+function closeDialog() {
+    Avgrund.hide();
+}
+
+$('#about').on('click', function(e){
+    Avgrund.show( "#about-box" );
+});
 
 $('#clear-btn').on('click', function(e){
 /*  $('input:radio:checked').map(function() {

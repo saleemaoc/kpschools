@@ -42,13 +42,23 @@ module.exports = function(grunt) {
             expand: true,
             flatten: true,
             cwd: 'node_modules/',
-            src: ['bootstrap/dist/css/bootstrap.min.css','ladda/dist/ladda.min.css'],
+            src: [
+            'bootstrap/dist/css/bootstrap.min.css',
+            'ladda/dist/ladda.min.css',
+            'mfb/src/mfb.min.css'
+            ],
             dest: 'site/dist/css'
           },
           {
             expand: true,
             cwd: 'node_modules/',
-            src: ['jquery/dist/jquery.min.js', 'bootstrap/dist/js/bootstrap.min.js', 'ladda/dist/spin.min.js', 'ladda/dist/ladda.min.js'],
+            src: [
+              'jquery/dist/jquery.min.js', 
+              'bootstrap/dist/js/bootstrap.min.js', 
+              'ladda/dist/spin.min.js', 
+              'ladda/dist/ladda.min.js',
+              'mfb/src/mfb.min.js',
+              ],
             dest: 'site/dist/js',
             flatten: true
           },
@@ -90,7 +100,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-reload');
-  grunt.loadNpmTasks('grunt-jade-usemin');
+  // grunt.loadNpmTasks('grunt-jade-usemin');
 
 
   // Default task(s).

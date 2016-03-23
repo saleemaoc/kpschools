@@ -5,7 +5,7 @@ var pg = require('pg')
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'KP Services' })
+  res.render('index', { title: 'KP Schools' })
 };
 
 exports.districts = function(req, res) {

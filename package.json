@@ -38,6 +38,7 @@
     "leaflet.markercluster": "^0.4.0",
     "lie": "^3.0.1",
     "lru-cache": "^2.7.0",
+    "mfb": "^0.12.0",
     "mocha": "^2.3.3",
     "parsedbf": "0.1.1",
     "proj4": "^2.1.4",
