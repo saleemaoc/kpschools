@@ -139,17 +139,34 @@ function showSchools(schools) {
     onEachFeature:function popUp(f,l){
       var out = [];
       // console.log(f);
-      if (f.properties){
+      if (f.properties) {
         for(var key in f.properties){
           out.push(key.replace("_"," ") + ": " + f.properties[key]);
         }
         l.bindPopup(out.join('<br />'));
+        var size = 'l';
+        if(f.properties['Level'] === 'Primary') {
+          size = 's';
+        } else if(f.properties['Level'] === 'Middle') {
+          size='m';
+        }
+        if(f.properties['Gender'] === 'Boys') {
+          l.setIcon(L.MakiMarkers.icon({icon: "school", color: "#0bb", size: size}));
+        } else {
+          l.setIcon(L.MakiMarkers.icon({icon: "school", color: "#b0b", size: size}));
+        }
+        
+        // console.log(l.options.icon);
+        // l.options.icon = return L.MakiMarkers.icon({icon: "rocket", color: "#b0b", size: "m"});
       }
     }
   });
+var c;
   markers = new L.markerClusterGroup({
     disableClusteringAtZoom: 12,
     showCoverageOnHover: true,
+    singleMarkerMode:false,
+
   });
 
   if (markers !== null) {
@@ -197,6 +214,11 @@ $('#refresh-btn').on('click', function(e){
     // }
   }).get();
 
+  // hide menu and show map, if map hidden
+  if($('#map').hasClass('collapse')) {
+    toggleMenu();
+  }
+
   console.log(checkedValues);
   var l = Ladda.create($('#refresh-btn')[0]);
   l.start();
@@ -218,6 +240,22 @@ $('#refresh-btn').on('click', function(e){
 function closeDialog() {
     Avgrund.hide();
 }
+
+
+function toggleMenu() {
+  var el = $('.btn-toolbar');
+  if(el.hasClass('expand')) {
+    el.removeClass('expand');
+    $('#map').removeClass('collapse');
+  } else {
+    el.addClass('expand');
+    $('#map').addClass('collapse');
+  }
+}
+
+$('.menu-btn').on('click', function(e){
+  toggleMenu();
+});
 
 $('#about').on('click', function(e){
     Avgrund.show( "#about-box" );

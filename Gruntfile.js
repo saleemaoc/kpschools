@@ -85,7 +85,7 @@ module.exports = function(grunt) {
       },
       scripts: {
         files: ['public/js/main.js', 'app.js', 'routes/index.js', 'public/stylesheets/style.css'],
-        tasks: ['default'],
+        tasks: ['buildall'],
         options: {
           spawn: false,
         },
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['uglify:build_main', 'jshint']);
-  grunt.registerTask('buildall', ['uglify', 'copy']);
+  grunt.registerTask('buildall', ['uglify', 'cssmin','copy']);
 
   grunt.event.on('watch', function(action, filepath, target) {
     grunt.log.writeln(target + ': ' + filepath + ' has ' + action);

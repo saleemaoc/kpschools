@@ -6,7 +6,7 @@ body {
     height: 100%;
     margin: 0; padding: 0;
     background-color: #f8f8f8;
-    overflow: hidden;
+    overflow: visible;
 }
 
 
@@ -49,13 +49,54 @@ a {
     margin-bottom: 0px;
 }
 
+.btn-toolbar {
+}
+
+.responsive-menu {
+    float:right;
+    height:10%;
+}
+
+.menu-btn {
+    font-size: 1.3em;
+    display: none;
+}
+
+.expand {
+    display: block !important; 
+}
+
+.collapse {
+    display: none !important; 
+}
+
+.leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
+    -webkit-transition: -webkit-transform 0.3s ease-out, opacity 0.3s ease-in;
+    -moz-transition: -moz-transform 0.3s ease-out, opacity 0.3s ease-in;
+    -o-transition: -o-transform 0.3s ease-out, opacity 0.3s ease-in;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-in;
+    }
 @media screen and (max-width: 1024px) {
     .side-panel {
-        display: none;
+        display: visible;
     }
 
     #map {
         width: 100%;
         float: clear;
     }
+    .btn-toolbar {
+        display: none;
+        max-width: 70%;
+    }
+    .menu-btn {
+        display: inline;
+        font-size: 1em;
+        float: right;
+    }
+
+    .btn-group {
+        display: 
+    }
+
 }
