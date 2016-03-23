@@ -2,102 +2,102 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <span class="navbar-brand">KP Mapped</span>
+      <span class="navbar-brand">KP Schools</span>
     </div>
 
     <div class="btn-toolbar" style="float:right;height:10%;">
-        <div class="btn-group">
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Girls</span>
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default navbar-btn btn-sm">Girls
                 <input type="radio" class="radio" name="gender" value="girls" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Boys</span>
+            <label class="btn btn-default navbar-btn btn-sm">Boys
                 <input type="radio" class="radio" name="gender" value="boys">
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
      
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>All</span>
+            <label class="btn btn-default navbar-btn btn-sm active">All
                 <input type="radio" class="radio allradio" name="gender" value="allgender" checked />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
         </div>
 
 
-        <div class="btn-group">
+        <div class="btn-group" data-toggle="buttons">
      
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Primary</span>
+            <label class="btn btn-default navbar-btn btn-sm">Primary
                 <input type="radio" class="radio" name="level" value="primary" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Middle</span>
+            <label class="btn btn-default navbar-btn btn-sm">Middle
                 <input type="radio" class="radio" name="level" value="middle" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>High</span>
+            <label class="btn btn-default navbar-btn btn-sm">High
                 <input type="radio" class="radio" name="level" value="high" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Higher Secondary</span>
+            <label class="btn btn-default navbar-btn btn-sm">Higher Secondary
                 <input type="radio" class="radio" name="level" value="highersec" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>All</span>
+            <label class="btn btn-default navbar-btn btn-sm active">All
                 <input type="radio" class="radio allradio" name="level" value="alllevel" checked/>
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
         </div>
 
 
 
-        <div class="btn-group">
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Functional</span>
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default navbar-btn btn-sm">Functional
                 <input type="radio" class="radio" name="status" value="functional" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Closed</span>
+            <label class="btn btn-default navbar-btn btn-sm">Closed
                 <input type="radio" class="radio" name="status" value="closed" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>All</span>
+            <label class="btn btn-default navbar-btn btn-sm active">All
                 <input type="radio" class="radio allradio" name="status" value="allstatus" checked="checked" />
-            </button>
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
      
         </div>
 
 
-        <div class="btn-group">
+        <div class="btn-group" data-toggle="buttons">
      
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Urban</span>
-                <input type="radio" class="radio" name="location" value="urban" />
-            </button>
+            <label class="btn btn-default navbar-btn btn-sm">Urban
+                <input type="radio" class="radio" name="location"  autocomplete="off" value="urban" />
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>Rural</span>
-                <input type="radio" class="radio" name="location" value="rural" />
-            </button>
+            <label class="btn btn-default navbar-btn btn-sm">Rural
+                <input type="radio" class="radio" name="location"  autocomplete="off" value="rural" />
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
 
-            <button type="button" class="btn btn-default navbar-btn">
-                <span>All</span>
-                <input type="radio" class="radio allradio" name="location" value="alllocation" checked="checked" />
-            </button>
+            <label class="btn btn-default navbar-btn btn-sm active">All
+                <input type="radio" class="radio allradio" name="location"  autocomplete="off" value="alllocation" checked />
+                <small><span class="glyphicon glyphicon-ok"></span></small>
+            </label>
         </div>
 
         <div class="btn-group" style="margin-left:20px;">
-          <button id="refresh-btn" class="btn navbar-btn ladda-button" data-size="xs" data-color="red" data-style="slide-up">
+          <button id="refresh-btn" class="btn navbar-btn ladda-button" data-size="xs" data-color="blue" data-style="slide-up">
             <!-- <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> -->
             <span class="label ladda-label">Submit</span>
             <span class="ladda-spinner"></span>
           </button>
-          <button id="clear-btn" class="btn navbar-btn ladda-button" data-size="xs" data-color="red" data-style="slide-up">
+          <button id="clear-btn" class="btn navbar-btn ladda-button" data-size="xs" data-color="blue" data-style="slide-up">
             <!-- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> -->
             <span class="label ladda-label">Reset</span>
           </button>

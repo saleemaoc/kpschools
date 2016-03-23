@@ -20,6 +20,13 @@ a {
     color: #00B7FF;
 }
 
+.btn span.glyphicon {               
+    opacity: 0;             
+}
+.btn.active span.glyphicon {                
+    opacity: 1;             
+}
+
 .side-panel {
     width: 25%;
     float:left;

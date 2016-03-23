@@ -48,7 +48,7 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'node_modules/',
-            src: ['jquery/dist/jquery.min.js','ladda/dist/spin.min.js', 'ladda/dist/ladda.min.js'],
+            src: ['jquery/dist/jquery.min.js', 'bootstrap/dist/js/bootstrap.min.js', 'ladda/dist/spin.min.js', 'ladda/dist/ladda.min.js'],
             dest: 'site/dist/js',
             flatten: true
           },
