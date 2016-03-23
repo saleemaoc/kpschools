@@ -79,11 +79,13 @@ bounds = L.latLngBounds(southWest, northEast);
 
 
 var m= L.map('map', {maxBounds: bounds, maxZoom:19}).setView([33.0999,71.1328], 9);
-var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+/*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 });
-tiles.addTo(m);
+tiles.addTo(m);*/
+var googleLayer = new L.Google('ROADMAP');
+m.addLayer(googleLayer);
 
 function showDistricts(f) {
   var geo = L.geoJson(
