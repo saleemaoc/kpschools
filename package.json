@@ -29,6 +29,7 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-uglify": "1.0.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-jade-usemin": "^1.2.0",
     "grunt-reload": "^0.2.0",
     "jshint": "^2.5.1",
     "jszip": "^2.5.0",

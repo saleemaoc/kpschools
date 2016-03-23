@@ -20,17 +20,17 @@ module.exports = function(grunt) {
         }
       }
     },
-/*    cssmin: {
+    cssmin: {
       target: {
         files: [{
           expand: true,
-          cwd: 'node_modules/bootstrap/dist/css/',
-          src: ['bootstrap.css'],
+          cwd: 'public/stylesheets/',
+          src: ['style.css'],
           dest: 'site/dist/css',
           ext: '.min.css'
         }]
       }
-    },*/
+    },
     jshint: {
       lint: ['Gruntfile.js', 'public/js/main.js']
     },
@@ -55,6 +55,20 @@ module.exports = function(grunt) {
         ],
       },
     },
+    jadeUsemin: {
+        scripts: {
+            options: {
+                tasks: {
+                    js: ['concat', 'uglify'],
+                    css: ['concat', 'cssmin']
+                }
+            },
+            files: [{
+                dest: './views/indexmin.jade',
+                src: './views/index.jade'
+            }]
+        }
+    },
     watch: {
       options: {
         livereload: true,
@@ -76,6 +90,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-reload');
+  grunt.loadNpmTasks('grunt-jade-usemin');
 
 
   // Default task(s).
