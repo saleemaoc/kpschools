@@ -25,7 +25,7 @@ Gender: Boys, Girls
 
 ## Demo
 
-`http://kpschools-suaoc.rhcloud.com`
+[Demo link](http://kpschools-suaoc.rhcloud.com/)
 
 
 ### Installation
