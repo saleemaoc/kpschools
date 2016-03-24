@@ -22,10 +22,16 @@ Status: Functional, Temporary closed
 Location: Urban, Rural
 Gender: Boys, Girls
 
-
 A ranking score is calculated for each school based on the students to teachers ration, students to classrooms ratio, area covered, facilities. This score is represented through thematic markers where green shows high ranked schools and red shows lower ranked schools.
 
-### Usage
+
+## Demo
+
+`http://kpschools-suaoc.rhcloud.com`
+
+
+### Installation
+
 [todo include db migrations]
 ```
 git clone
@@ -35,15 +41,20 @@ npm start
 ```
 Open `http://localhost:3000` in your browser
 
+
 ## Browser support
 
 The project is tested in Chrome and Firefox. It Should Work™ in the current stable releases of Chrome, Firefox, Safari as well as IE9 and up.
 
+
 ## Todos
 
-* Urdu language support
+* Calculate and display ranking score for every school
+* Port to backbone.js
 * Test coverage
 * Documentation
+* Urdu language support
+
 
 ## License
 
