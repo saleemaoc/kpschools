@@ -32,8 +32,8 @@ Gender: Boys, Girls
 
 [todo include db migrations]
 ```
-git clone
-cd 
+git clone git@github.com:saleemaoc/kpschools.git
+cd kpschools
 npm install
 npm start
 ```
