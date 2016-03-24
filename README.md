@@ -22,8 +22,6 @@ Status: Functional, Temporary closed
 Location: Urban, Rural
 Gender: Boys, Girls
 
-A ranking score is calculated for each school based on the students to teachers ration, students to classrooms ratio, area covered, facilities. This score is represented through thematic markers where green shows high ranked schools and red shows lower ranked schools.
-
 
 ## Demo
 
@@ -50,6 +48,9 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 ## Todos
 
 * Calculate and display ranking score for every school
+	A ranking score will be calculated for each school based on the students to teachers ration, students to classrooms ratio, area covered, facilities. This score is represented through thematic markers where green shows high ranked schools and red shows lower ranked schools.
+
+* Add map legend
 * Port to backbone.js
 * Test coverage
 * Documentation
