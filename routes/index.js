@@ -9,8 +9,13 @@ exports.index = function(req, res){
 };
 
 exports.districts = function(req, res) {
-    pg.connect(getDBConnectionURL(), function(err, client) {
+    pg.connect(getDBConnectionURL(), function(err, client, done) {
         var sql = 'select ST_AsGeoJSON(geom) as shape, NAME_2 as division, NAME_3 as district, shape_area from kpdistricts;';
+        if(err) {
+          done();
+          console.log(err);
+          return res.status(500).json({ success: false, data: err});
+        }
         // {type: "Feature", geometry: Object, properties: Object}
         client.query(sql, function(err, result) {
             var districts = new FeatureCollection();
@@ -18,8 +23,8 @@ exports.districts = function(req, res) {
                 districts.features[i] = JSON.parse(result.rows[i].shape);
                 districts.features[i]['properties'] = {'district': result.rows[i].district, 'division':  result.rows[i].division, 'area': result.rows[i].shape_area }
             }
+            done();
             res.send(districts);
-            //res.render('index', {title: 'KP Schools', features: districts })
         });
     });
 }
@@ -47,8 +52,6 @@ exports.filterSchools = function(req, res) {
             return v;
         }
     });
-    console.log(checked);
-
     var whereClause = ' where ';
     for(i=0;i<checked.length;i++) {
         whereClause += ' ' + clauseDict[checked[i]]
@@ -56,20 +59,24 @@ exports.filterSchools = function(req, res) {
             whereClause += ' and ';
         }
     }
-    console.log('checked: ' + checked.length);
+    // console.log('checked: ' + checked.length);
     whereClause += ';';
     if(checked.length > 0) {
         sql += whereClause;
     }
-    console.log(sql);
-
+    // console.log(sql);
     return getSchools(sql, function(schools) {
         res.send(schools);
     });
 }
 
 function getSchools(sql, cb) {
-    pg.connect(getDBConnectionURL(), function(err, client) {
+    pg.connect(getDBConnectionURL(), function(err, client, done) {
+        if(err) {
+          done();
+          console.log(err);
+          return res.status(500).json({ success: false, data: err});
+        }
         client.query(sql, function(err, result) {
             var schools = new FeatureCollection();
             for (i = 0; i < result.rows.length; i++) {
@@ -77,6 +84,7 @@ function getSchools(sql, cb) {
                 schools.features[i]['properties'] = {'School_Name': result.rows[i].schoolname, 'School_Code': result.rows[i].scode, 'Status': result.rows[i].status, 'Gender': result.rows[i].gender, 'Level': result.rows[i].level, 'Location': result.rows[i].location, 'Village': result.rows[i].village, 'Tehsil': result.rows[i].tehsil, 'District': result.rows[i].district, 'Boys': result.rows[i].boys, 'Girls': result.rows[i].girls, 'Teaching_Staff': result.rows[i].teachstaff, 'Nonteaching_Staff': result.rows[i].nonteachin, 'Covered_Area': result.rows[i].coveredarea, 'Water': result.rows[i].water, 'Electricity': result.rows[i].electricity, 'Classrooms': result.rows[i].classrooms, 'Other_Rooms': result.rows[i].otherrooms, 'Latrine': result.rows[i].latrineusa, 'Boundary_Wall': result.rows[i].boudarywall}
             }
             cb(schools);
+            done();
         });
     });
 }
@@ -85,6 +93,11 @@ exports.healthUnits = function(req, res){
     // var sql = 'select ST_AsGeoJSON(geom) as shape from kpdistricts;'
     var sql = 'select ST_AsGeoJSON(geom) as shape, inst_name as name, district, tehsil, type, beds, locality, status, lat, long as lon from kphealth;';
     pg.connect(getDBConnectionURL(), function(err, client) {
+         if(err) {
+          done();
+          console.log(err);
+          return res.status(500).json({ success: false, data: err});
+        }
         client.query(sql, function(err, result) {
             var hu = new FeatureCollection();
             for (i = 0; i < result.rows.length; i++) {
