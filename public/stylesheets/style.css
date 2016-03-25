@@ -48,7 +48,16 @@ a {
 }
 
 .navbar {
+    background: rebeccapurple;
     margin-bottom: 0px;
+}
+
+.ladda-button[data-color=blue] {
+  background: rebeccapurple;
+}
+
+.ladda-button[data-color=blue]:hover {
+  background: rebeccapurple;
 }
 
 .btn-toolbar {
