@@ -195,11 +195,6 @@ $('#refresh-btn').on('click', function(e){
       return this.value;
   }).get();
 
-  // hide menu and show map, if map hidden
-  if($('#map').hasClass('collapse')) {
-    toggleMenu();
-  }
-
   // console.log(checkedValues);
   var l = Ladda.create($('#refresh-btn')[0]);
   l.start();
@@ -213,6 +208,10 @@ $('#refresh-btn').on('click', function(e){
       showSchools(response);
     }
     l.stop();
+      // hide menu and show map, if map hidden
+    if($('#map').hasClass('collapse')) {
+      toggleMenu();
+    }
   });
 
 });
