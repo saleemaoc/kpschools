@@ -78,7 +78,7 @@ northEast = L.latLng(44.774, 76.125),
 bounds = L.latLngBounds(southWest, northEast);
 
 
-var m= L.map('map', {maxBounds: bounds, maxZoom:19}).setView([33.0999,71.1328], 9);
+var m= L.map('map', {maxBounds: bounds, maxZoom:19}).setView([33.9099,71.9328], 10);
 /*var tiles = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -147,7 +147,7 @@ function showSchools(schools) {
 var c;
   markers = new L.markerClusterGroup({
     disableClusteringAtZoom: 12,
-    showCoverageOnHover: true,
+    showCoverageOnHover: false,
     singleMarkerMode:false,
 
   });
