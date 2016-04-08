@@ -45,7 +45,6 @@ $(document).ready(function(){
       showDistricts(response);
       console.log('districts loaded');
     }
-    l.stop();
   });
 
   $.get('/schools', function(response) {
@@ -54,6 +53,7 @@ $(document).ready(function(){
       showSchools(response);
       console.log('schools loaded');
     }
+    l.stop();
   });
 
 /*  $.get('/healthunits', function(response) {
@@ -94,7 +94,7 @@ function showDistricts(f) {
     },
     {
       style: myStyle,
-
+/*
       onEachFeature:function popUp(f,l){
         var out = [];
         if (f.properties){
@@ -108,7 +108,7 @@ function showDistricts(f) {
           l.bindPopup(popUpStr);
         }
       }
-    }).addTo(m);
+*/    }).addTo(m);
 }
 
 var markers;
@@ -146,7 +146,7 @@ function showSchools(schools) {
   });
 var c;
   markers = new L.markerClusterGroup({
-    disableClusteringAtZoom: 12,
+    disableClusteringAtZoom: 13,
     showCoverageOnHover: false,
     singleMarkerMode:false,
 
@@ -198,7 +198,7 @@ $('#refresh-btn').on('click', function(e){
   // console.log(checkedValues);
   var l = Ladda.create($('#refresh-btn')[0]);
   l.start();
-  $.post('/schools', {'checked': checkedValues}, function(response) {
+  $.post('/schools', {'district': $(".selectpicker :selected").val(), 'checked': checkedValues}, function(response) {
     // Log the response to the console
     console.log('response');
     if(response !== undefined) {
@@ -263,4 +263,8 @@ $('.cd-panel').on('click', function(event){
     $('.cd-panel').removeClass('is-visible');
     event.preventDefault();
   }
+});
+
+$('.selectpicker').change(function(){
+
 });

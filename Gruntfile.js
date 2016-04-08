@@ -43,6 +43,7 @@ module.exports = function(grunt) {
             flatten: true,
             cwd: 'node_modules/',
             src: [
+            'bootstrap-select/dist/css/bootstrap-select.min.css',
             'bootstrap/dist/css/bootstrap.min.css',
             'ladda/dist/ladda.min.css',
             'mfb/src/mfb.min.css'
@@ -53,6 +54,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'node_modules/',
             src: [
+              'bootstrap-select/dist/js/bootstrap-select.min.js',
               'jquery/dist/jquery.min.js', 
               'bootstrap/dist/js/bootstrap.min.js', 
               'ladda/dist/spin.min.js', 

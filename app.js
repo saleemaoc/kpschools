@@ -34,7 +34,6 @@ app.get('/', routes.index);
 app.get('/districts', routes.districts);
 app.get('/schools', routes.schools);
 app.post('/schools', routes.filterSchools);
-app.get('/healthunits', routes.healthUnits);
 
 var port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
 var ip = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
