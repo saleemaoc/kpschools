@@ -32,7 +32,7 @@ exports.districts = function(req, res) {
 exports.schools = function(req, res){
     // var sql = 'select ST_AsGeoJSON(geom) as shape from kpdistricts;'
     var sql = 'select ST_AsGeoJSON(geom) as shape, schoolname, scode, status, gender, level, location, village, tehsil, district, boys, girls, teachers, \
-    nonteacher, coveredare, water, electricit, classrooms, otherrooms, latrineusa, boundarywa from schools where UPPER(district) like \'%PESHAWAR%\' ;';
+    nonteacher, coveredare, water, electricit, classrooms, otherrooms, latrineusa, boundarywa from schools where UPPER(district) like \'%PESHAWAR%\' limit 900;';
     return getSchools(sql, function(schools, error) {
         if(error) {
             res.status(500).json({ success: false, data: err});
@@ -71,7 +71,7 @@ exports.filterSchools = function(req, res) {
     }
     console.log('district: ' + district);
     console.log('checked: ' + checked.length);
-    whereClause += ';';
+    whereClause += ' limit 900;';
     // if(checked.length > 0) {
     sql += whereClause;
     // }
